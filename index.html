@@ -3,7 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Learning Portfolio</title>
+        <title>materi struktur data</title>
+        <meta
+            name="description"
+            content="Dokumentasi materi dan catatan pembelajaran Struktur Data semester 2 Teknik Informatika oleh Wisnu Aji Saka Pratama Putra."
+        />
         <!-- Google Fonts: Poppins -->
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -18,177 +22,270 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <!-- Sticky Navbar -->
-        <nav id="nav_bar" class="nav_bar">
-            <ul class="nav_list">
-                <li class="nav_item">
-                    <a href="#" class="nav_link">Home</a>
-                </li>
-                <li class="nav_item">
-                    <a href="#materi_section" class="nav_link">Materi</a>
-                </li>
-                <li class="nav_item">
-                    <a href="#about_us_section" class="nav_link">About Us</a>
-                </li>
-            </ul>
-        </nav>
+        <!-- ===== Floating Hamburger Button ===== -->
+        <button
+            id="hamburger_btn"
+            class="hamburger_btn"
+            aria-label="Open navigation menu"
+        >
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
 
-        <!-- Hero Section -->
-        <header id="hero_section" class="hero_section">
-            <img
-                src="profil.jpeg"
-                alt="Profile Picture"
-                class="profile_image"
-            />
-            <h1 class="hero_name">Wisnu Aji Saka Pratama Putra</h1>
-            <p class="hero_description">
-                NIM: 250411100099 <br /><br />
-                Berisi dokumentasi materi dan catatan pembelajaran Struktur
-                Data selama semester 2 Teknik Informatika, disusun sebagai media
-                belajar yang kurang ringkas, tidak terstruktur, dan sulit
-                dipahami.
-            </p>
-            <a href="#materi_section" class="start_button">Menuju Materi</a>
-        </header>
+        <!-- ===== Sidebar Overlay (mobile/tablet backdrop) ===== -->
+        <div id="sidebar_overlay" class="sidebar_overlay"></div>
 
-        <!-- Learning Modules Section -->
-        <section id="materi_section" class="materi_section">
-            <h2 class="section_title">Learning Modules</h2>
-
-            <div class="module_grid">
-                <!-- Module 1 -->
-                <a
-                    href="https://drive.google.com/file/d/1Cg0O3SZTS7cP-haf8CtRNU8g7fbKYGC7/view?usp=drive_link"
-                    target="_blank"
-                    class="module_card"
+        <!-- ===== Sidebar ===== -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar_header">
+                <span class="sidebar_logo">Struktur Data</span>
+                <button
+                    id="close_sidebar_btn"
+                    class="close_sidebar_btn"
+                    aria-label="Close navigation menu"
                 >
-                    <h3 class="card_title">Stack, Queue, Deque</h3>
-                    <p class="card_description">
-                        Membahas Stack (LIFO), Queue (FIFO), dan Deque yang
-                        dapat mengakses data dari dua sisi.
-                    </p>
-                </a>
-                <!-- Module 2 -->
-                <a
-                    href="https://drive.google.com/file/d/1g-wSAuePK-gBqi0msN2HxZroaT2YWMSI/view?usp=drive_link"
-                    target="_blank"
-                    class="module_card"
-                >
-                    <h3 class="card_title">Sorting #1</h3>
-                    <p class="card_description">
-                        Membahas Bubble Sort, Selection Sort, dan Insertion Sort
-                        sebagai algoritma dasar pengurutan data.
-                    </p>
-                </a>
-                <!-- Module 3 -->
-                <a
-                    href="https://drive.google.com/file/d/1pykdCBR_IE2j9IWyI2VFvvBt57dp4naP/view?usp=drive_link"
-                    target="_blank"
-                    class="module_card"
-                >
-                    <h3 class="card_title">Rekursif</h3>
-                    <p class="card_description">
-                        Membahas fungsi rekursif yang memanggil dirinya sendiri
-                        untuk menyelesaikan masalah secara bertahap.
-                    </p>
-                </a>
-                <!-- Module 4 -->
-                <a
-                    href="https://drive.google.com/file/d/1Hgj3idIPCZ06umGhhDaxvGZsLE7zLwEN/view?usp=drive_link"
-                    target="_blank"
-                    class="module_card"
-                >
-                    <h3 class="card_title">Searching</h3>
-                    <p class="card_description">
-                        Membahas teknik searching untuk mencari data menggunakan
-                        Sequential Search dan Binary Search.
-                    </p>
-                </a>
-                <!-- Module 5 -->
-                <a
-                    href="https://drive.google.com/file/d/16iYc-ZPQcGxGFZenFxZm1ENkRfqFlDta/view?usp=drive_link"
-                    target="_blank"
-                    class="module_card"
-                >
-                    <h3 class="card_title">Hashing</h3>
-                    <p class="card_description">
-                        Membahas hashing untuk menyimpan dan mencari data dengan
-                        cepat menggunakan fungsi hash.
-                    </p>
-                </a>
-                <!-- Module 6 -->
-                <a
-                    href="mhttps://drive.google.com/file/d/1pJepXYVCma2vImPdtMIPjNr7q0rhgIjS/view?usp=drive_link"
-                    target="_blank"
-                    class="module_card"
-                >
-                    <h3 class="card_title">Sorting #2</h3>
-                    <p class="card_description">
-                        Membahas algoritma sorting seperti Merge Sort, Quick
-                        Sort, dan Counting Sort untuk mengurutkan data secara
-                        efisien.
-                    </p>
-                </a>
-                <!-- Module 7 -->
-                <a href="#" class="module_card">
-                    <h3 class="card_title">TO BE ADDED LATER</h3>
-                    <p class="card_description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Ab, sit!
-                    </p>
-                </a>
-                <!-- Module 8 -->
-                <a href="#" class="module_card">
-                    <h3 class="card_title">TO BE ADDED LATER</h3>
-                    <p class="card_description">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Debitis, consectetur.
-                    </p>
-                </a>
-                <!-- Module 9 -->
-                <a href="#" class="module_card">
-                    <h3 class="card_title">TO BE ADDED LATER</h3>
-                    <p class="card_description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Aliquam, facere.
-                    </p>
-                </a>
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
-        </section>
 
-        <!-- About Us Section -->
-        <footer id="about_us_section" class="about_us_section">
-            <h2 class="footer_title">About Us</h2>
-            <p class="footer_description">
-                Barang kali mau lebih kenal dengan saya hehe.
-            </p>
+            <nav class="sidebar_nav">
+                <ul class="sidebar_list">
+                    <li>
+                        <a href="#hero_section" class="sidebar_link">
+                            <i class="fa-solid fa-house sidebar_icon"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#materi_section" class="sidebar_link">
+                            <i class="fa-solid fa-book-open sidebar_icon"></i>
+                            Materi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#about_us_section" class="sidebar_link">
+                            <i class="fa-solid fa-user sidebar_icon"></i>
+                            About Us
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
 
-            <div class="social_container">
-                <a
-                    href="https://www.instagram.com/wheeznuu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="social_link"
-                >
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a
-                    href="https://www.tiktok.com/@wheeznuu"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="social_link"
-                >
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-                <a
-                    href="https://github.com/Wheeznu"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="social_link"
-                >
-                    <i class="fa-brands fa-github"></i>
-                </a>
-            </div>
-        </footer>
+        <!-- ===== Page Wrapper (pushed on desktop when sidebar opens) ===== -->
+        <div id="page_wrapper" class="page_wrapper">
+            <!-- Hero Section -->
+            <header id="hero_section" class="hero_section">
+                <img
+                    src="profil.jpeg"
+                    alt="Profile Picture"
+                    class="profile_image"
+                />
+                <h1 class="hero_name">Wisnu Aji Saka Pratama Putra</h1>
+                <p class="hero_description">
+                    NIM: 250411100099 <br /><br />
+                    Berisi dokumentasi materi dan catatan pembelajaran Struktur
+                    Data selama semester 2 Teknik Informatika, disusun sebagai
+                    media belajar yang kurang ringkas, tidak terstruktur, dan
+                    sulit dipahami.
+                </p>
+                <a href="#materi_section" class="start_button">Menuju Materi</a>
+            </header>
+
+            <!-- Learning Modules Section -->
+            <section id="materi_section" class="materi_section">
+                <h2 class="section_title">Learning Modules</h2>
+
+                <div class="module_grid">
+                    <!-- Module 1 -->
+                    <a
+                        href="https://colab.research.google.com/drive/1Cg0O3SZTS7cP-haf8CtRNU8g7fbKYGC7"
+                        target="_blank"
+                        class="module_card"
+                    >
+                        <h3 class="card_title">Stack, Queue, Deque</h3>
+                        <p class="card_description">
+                            Membahas Stack (LIFO), Queue (FIFO), dan Deque yang
+                            dapat mengakses data dari dua sisi.
+                        </p>
+                    </a>
+                    <!-- Module 2 -->
+                    <a
+                        href="https://colab.research.google.com/drive/1g-wSAuePK-gBqi0msN2HxZroaT2YWMSI"
+                        target="_blank"
+                        class="module_card"
+                    >
+                        <h3 class="card_title">Sorting #1</h3>
+                        <p class="card_description">
+                            Membahas Bubble Sort, Selection Sort, dan Insertion
+                            Sort sebagai algoritma dasar pengurutan data.
+                        </p>
+                    </a>
+                    <!-- Module 3 -->
+                    <a
+                        href="https://colab.research.google.com/drive/1pykdCBR_IE2j9IWyI2VFvvBt57dp4naP"
+                        target="_blank"
+                        class="module_card"
+                    >
+                        <h3 class="card_title">Rekursif</h3>
+                        <p class="card_description">
+                            Membahas fungsi rekursif yang memanggil dirinya
+                            sendiri untuk menyelesaikan masalah secara bertahap.
+                        </p>
+                    </a>
+                    <!-- Module 4 -->
+                    <a
+                        href="https://colab.research.google.com/drive/1Hgj3idIPCZ06umGhhDaxvGZsLE7zLwEN"
+                        target="_blank"
+                        class="module_card"
+                    >
+                        <h3 class="card_title">Searching</h3>
+                        <p class="card_description">
+                            Membahas teknik searching untuk mencari data
+                            menggunakan Sequential Search dan Binary Search.
+                        </p>
+                    </a>
+                    <!-- Module 5 -->
+                    <a
+                        href="https://colab.research.google.com/drive/16iYc-ZPQcGxGFZenFxZm1ENkRfqFlDta"
+                        target="_blank"
+                        class="module_card"
+                    >
+                        <h3 class="card_title">Hashing</h3>
+                        <p class="card_description">
+                            Membahas hashing untuk menyimpan dan mencari data
+                            dengan cepat menggunakan fungsi hash.
+                        </p>
+                    </a>
+                    <!-- Module 6 -->
+                    <a
+                        href="https://colab.research.google.com/drive/1pJepXYVCma2vImPdtMIPjNr7q0rhgIjS"
+                        target="_blank"
+                        class="module_card"
+                    >
+                        <h3 class="card_title">Sorting #2</h3>
+                        <p class="card_description">
+                            Membahas algoritma sorting seperti Merge Sort, Quick
+                            Sort, dan Counting Sort untuk mengurutkan data
+                            secara efisien.
+                        </p>
+                    </a>
+                    <!-- Module 7 -->
+                    <a href="#" class="module_card">
+                        <h3 class="card_title">TO BE ADDED LATER</h3>
+                        <p class="card_description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Ab, sit!
+                        </p>
+                    </a>
+                    <!-- Module 8 -->
+                    <a href="#" class="module_card">
+                        <h3 class="card_title">TO BE ADDED LATER</h3>
+                        <p class="card_description">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Debitis, consectetur.
+                        </p>
+                    </a>
+                    <!-- Module 9 -->
+                    <a href="#" class="module_card">
+                        <h3 class="card_title">TO BE ADDED LATER</h3>
+                        <p class="card_description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Aliquam, facere.
+                        </p>
+                    </a>
+                    <!-- tugas 1 -->
+                    <a
+                        href="colab.research.google.com/drive/1R5ni7yORRpK3z7qx5MENpnmGWVc-0394"
+                        class="module_card"
+                    >
+                        <h3 class="card_title">Tugas 1</h3>
+                        <p class="card_description">
+                            Copy dari hasil pengerjaan tugas 1 Sturktur Data
+                        </p>
+                    </a>
+                    <!-- tugas 2 -->
+                    <a
+                        href="https://colab.research.google.com/drive/1XUBULyX_-WmPWfrCJ6sKOc1ddrixunzC"
+                        class="module_card"
+                    >
+                        <h3 class="card_title">Tugas 2</h3>
+                        <p class="card_description">
+                            Copy dari hasil pengerjaan tugas 2 Sturktur Data
+                        </p>
+                    </a>
+                    <!-- tugas 3 -->
+                    <a
+                        href="https://colab.research.google.com/drive/1F-i-8MMf8rkxG9Q54jp1zRU08Tylzk8_"
+                        class="module_card"
+                    >
+                        <h3 class="card_title">Tugas 3</h3>
+                        <p class="card_description">
+                            Copy dari hasil pengerjaan tugas 3 Sturktur Data
+                        </p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- About Us / Footer Section -->
+            <footer id="about_us_section" class="about_us_section">
+                <div class="footer_inner">
+                    <h2 class="footer_title">About Us</h2>
+                    <p class="footer_description">
+                        Barang kali mau lebih kenal dengan saya hehe.
+                    </p>
+
+                    <div class="social_container">
+                        <a
+                            href="https://www.instagram.com/wheeznuu/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="social_link"
+                            aria-label="Instagram"
+                        >
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a
+                            href="https://www.tiktok.com/@wheeznuu"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="social_link"
+                            aria-label="TikTok"
+                        >
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a
+                            href="https://github.com/Wheeznu"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="social_link"
+                            aria-label="GitHub"
+                        >
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a
+                            href="https://tako.id/Wheeznu"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="social_link donate_link"
+                            aria-label="Donasi"
+                            title="Traktir saya!"
+                        >
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
+
+                    <p class="footer_copy">
+                        &copy; 2026 Wisnu Aji Saka Pratama Putra. All rights
+                        reserved.
+                    </p>
+                </div>
+            </footer>
+        </div>
+        <!-- end #page_wrapper -->
+
+        <!-- External JS -->
+        <script src="main.js"></script>
     </body>
 </html>
