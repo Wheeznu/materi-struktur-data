@@ -8,6 +8,8 @@
     --accent_blue: #58a6ff;
     --accent_blue_hover: #3182ce;
     --shadow_color: rgba(88, 166, 255, 0.15);
+    --sidebar_width: 270px;
+    --transition_speed: 0.35s;
 }
 
 /* --- Base Reset & Typography --- */
@@ -26,40 +28,202 @@ body {
     background-color: var(--bg_color);
     color: var(--text_primary);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* --- Sticky Navbar --- */
-.nav_bar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: rgba(22, 27, 34, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border_color);
-    padding: 1rem 0;
+/* ==========================================
+   Floating Hamburger Button
+   ========================================== */
+.hamburger_btn {
+    position: fixed;
+    top: 1.2rem;
+    left: 1.2rem;
+    z-index: 1100;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 46px;
+    height: 46px;
+    background: rgba(22, 27, 34, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border_color);
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+    transition:
+        opacity var(--transition_speed) ease,
+        transform var(--transition_speed) ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.nav_list {
+.hamburger_btn:hover {
+    background: rgba(88, 166, 255, 0.12);
+    border-color: var(--accent_blue);
+    box-shadow: 0 4px 22px var(--shadow_color);
+}
+
+.hamburger_btn .bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--text_primary);
+    border-radius: 2px;
+    transition: background 0.2s ease;
+}
+
+.hamburger_btn:hover .bar {
+    background-color: var(--accent_blue);
+}
+
+/* Hidden state — fades out & scales down */
+.hamburger_btn.hidden {
+    opacity: 0;
+    transform: scale(0.6);
+    pointer-events: none;
+}
+
+/* ==========================================
+   Sidebar Overlay (mobile/tablet backdrop)
+   ========================================== */
+.sidebar_overlay {
+    display: none; /* only shown on mobile via media query activation */
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 1150;
+    opacity: 0;
+    pointer-events: none; /* prevent blocking clicks when invisible */
+    transition: opacity var(--transition_speed) ease;
+}
+
+.sidebar_overlay.active {
+    opacity: 1;
+    pointer-events: auto; /* re-enable clicks only when overlay is visible */
+}
+
+/* ==========================================
+   Sidebar
+   ========================================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--sidebar_width);
+    z-index: 1200;
+    background: rgba(22, 27, 34, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-right: 1px solid var(--border_color);
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform var(--transition_speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+/* Sidebar Header */
+.sidebar_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.4rem;
+    border-bottom: 1px solid var(--border_color);
+    min-height: 70px;
+}
+
+.sidebar_logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+}
+
+.close_sidebar_btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text_secondary);
+    font-size: 1.2rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.close_sidebar_btn:hover {
+    color: var(--accent_blue);
+    border-color: var(--border_color);
+    background: rgba(88, 166, 255, 0.08);
+}
+
+/* Sidebar Nav */
+.sidebar_nav {
+    flex: 1;
+    padding: 1.2rem 0.8rem;
+    overflow-y: auto;
+}
+
+.sidebar_list {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
+    gap: 0.3rem;
 }
 
-.nav_link {
+.sidebar_link {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
     text-decoration: none;
-    color: var(--text_primary);
+    color: var(--text_secondary);
+    font-size: 0.95rem;
     font-weight: 500;
-    font-size: 1rem;
-    transition: color 0.3s ease;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
 }
 
-.nav_link:hover {
-    color: var(--accent_blue);
+.sidebar_link:hover {
+    color: var(--text_primary);
+    background: rgba(88, 166, 255, 0.08);
+    border-color: rgba(88, 166, 255, 0.2);
 }
 
-/* --- Hero Section --- */
+.sidebar_icon {
+    font-size: 0.95rem;
+    color: var(--text_primary);
+    width: 18px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* ==========================================
+   Page Wrapper — push layout on desktop
+   ========================================== */
+.page_wrapper {
+    transition: margin-left var(--transition_speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================
+   Hero Section
+   ========================================== */
 .hero_section {
     display: flex;
     flex-direction: column;
@@ -67,7 +231,7 @@ body {
     justify-content: center;
     text-align: center;
     padding: 6rem 2rem;
-    min-height: 85vh;
+    min-height: 100vh;
 }
 
 .profile_image {
@@ -113,7 +277,9 @@ body {
     box-shadow: 0 6px 15px var(--shadow_color);
 }
 
-/* --- Learning Modules Section --- */
+/* ==========================================
+   Learning Modules Section
+   ========================================== */
 .materi_section {
     padding: 5rem 2rem;
     max-width: 1200px;
@@ -130,7 +296,6 @@ body {
 
 .module_grid {
     display: grid;
-    /* Default to 3 columns on desktop */
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
@@ -159,20 +324,42 @@ body {
     font-size: 0.95rem;
 }
 
-/* Card Hover Effects */
 .module_card:hover {
     transform: translateY(-6px);
     border-color: var(--accent_blue);
     box-shadow: 0 8px 24px var(--shadow_color);
-    background-color: #1c2128; /* Slightly lighter surface on hover */
+    background-color: #1c2128;
 }
 
-/* --- About Us / Footer Section --- */
+/* ==========================================
+   Footer — Seamless with Body
+   ========================================== */
 .about_us_section {
-    padding: 1rem 1rem;
+    background-color: var(--bg_color);
+    padding: 0;
+    position: relative;
+}
+
+/* Soft separator gradient line */
+.about_us_section::before {
+    content: '';
+    display: block;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--border_color) 20%,
+        var(--accent_blue) 50%,
+        var(--border_color) 80%,
+        transparent
+    );
+    opacity: 0.5;
+    margin: 0 2rem;
+}
+
+.footer_inner {
+    padding: 3.5rem 2rem 2.5rem;
     text-align: center;
-    background-color: var(--surface_color);
-    border-top: 1px solid var(--border_color);
 }
 
 .footer_title {
@@ -183,7 +370,7 @@ body {
 
 .footer_description {
     color: var(--text_secondary);
-    margin-bottom: 1rem;
+    margin-bottom: 1.8rem;
     font-size: 0.95rem;
 }
 
@@ -191,6 +378,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 1.8rem;
+    margin-bottom: 2rem;
 }
 
 .social_link {
@@ -205,8 +393,56 @@ body {
     transform: scale(1.15);
 }
 
-/* --- Responsive Design --- */
+/* Donation link — distinct warm color */
+.donate_link {
+    position: relative;
+}
+
+.donate_link:hover {
+    color: #f472b6;
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 6px rgba(244, 114, 182, 0.5));
+}
+
+@keyframes pulse_heart {
+    0%, 100% { transform: scale(1.2); }
+    50% { transform: scale(1.32); }
+}
+
+.donate_link:hover i {
+    animation: pulse_heart 0.7s ease-in-out infinite;
+}
+
+.footer_copy {
+    font-size: 0.78rem;
+    color: var(--text_secondary);
+    opacity: 0.5;
+    letter-spacing: 0.03em;
+}
+
+/* ==========================================
+   Responsive Design
+   ========================================== */
+
+/* Desktop & Laptop — sidebar pushes content */
+@media screen and (min-width: 993px) {
+    .page_wrapper.shifted {
+        margin-left: var(--sidebar_width);
+    }
+}
+
+/* Tablet & Mobile — sidebar is overlay */
 @media screen and (max-width: 992px) {
+    /* Show overlay backdrop on mobile/tablet */
+    .sidebar_overlay {
+        display: block;
+    }
+
+    /* page_wrapper never shifts on mobile */
+    .page_wrapper.shifted {
+        margin-left: 0;
+    }
+
     .module_grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -218,11 +454,6 @@ body {
     }
 
     .module_grid {
-        /* Mobile single-column layout */
         grid-template-columns: 1fr;
-    }
-
-    .nav_list {
-        gap: 1.2rem;
     }
 }
